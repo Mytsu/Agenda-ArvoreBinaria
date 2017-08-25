@@ -107,7 +107,7 @@ namespace AgendaArvore {
             if(pai == null)
             {
                 // arvore vazia, fazer deste a raiz
-                root = newNode;
+                pai = newNode;
             }
             else
             {
@@ -135,37 +135,38 @@ namespace AgendaArvore {
             } else return null;
         }
 
-        public void Remover(int data) {
-            Remover(this.root, data);
+        public Node Remover(int data) {
+            return Remover(this.root, data);
         }
 
         public Node Remover(Node root, int data) {
             // funcao Remover recursiva
             // caso base, arvore vazia
-            if(root == null) return root;
+            if(this.root == null) return this.root;
             // recursao, descendo a arvore
-            if(root.getId() < data) {
-                root.setLeft(Remover(root.getLeft(), data));
+            if(this.root.getId() < data) {
+                this.root.setLeft(Remover(this.root.getLeft(), data));
             } 
-            else if(root.getId() > data) {
-                root.setRight(Remover(root.getRight(), data));
+            else if(this.root.getId() > data) {
+                this.root.setRight(Remover(this.root.getRight(), data));
             }
             // chave (data) e a mesma da raiz atual
             // deletando
             else {
                 // node com apenas um filho ou nenhum
-                if (root.getLeft() == null) {
-                    return root.getRight();
+                if (this.root.getLeft() == null) {
+                    return this.root.getRight();
                 }
-                else if (root.getRight() == null) {
-                    return root.getLeft();
+                else if (this.root.getRight() == null) {
+                    return this.root.getLeft();
                 }
 
                 // node com 2 filhos, pegar o sucessor em ordem (o menor)
-                root.setId(MenorValor(root.getLeft()));
+                this.root.setId(MenorValor(this.root.getLeft()));
                 // deletar sucessor em ordem
-
+                this.root.setLeft(Remover(this.root.getLeft(), data));
             }
+            return this.root;
         }
 
         public int MenorValor(Node root) {

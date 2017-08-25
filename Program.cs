@@ -31,6 +31,7 @@ namespace AgendaArvore
         }
 
         public static void ExibirMenu() {
+            Console.Clear();
             Console.WriteLine("Agenda de Contatos: ");
             Console.WriteLine("\t1. Adicionar Contato");
             Console.WriteLine("\t2. Pesquisar Contato");
@@ -66,7 +67,10 @@ namespace AgendaArvore
             Console.WriteLine("Digite o nome do contato");
             String nome = Console.ReadLine();
             int id = GerarId(nome);
-            agenda.Remover(id);
+            if(agenda.Remover(id) == null) {
+                Console.WriteLine("Contato removido.");
+            }
+            else Console.WriteLine("Contato nao encontrado.");
         }
 
         public static int GerarId(String nome) {
