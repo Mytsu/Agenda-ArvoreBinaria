@@ -1,4 +1,8 @@
 Agenda - Arvore Binaria
+  Exercícios de Algoritmos e Estrutura de Dados II
+  Instituto Federal de Minas Gerais - Campus Formiga (2017)
+  Jonathan Arantes
+
 =======================
 
 - Modelo de código de uma agenda escrito em C#, os dados são guardados por uma estrutura de dados de Árvore.
